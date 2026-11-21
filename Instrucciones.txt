@@ -1,0 +1,47 @@
+SOFTWARE FJ - Sistema de clientes, servicios y reservas
+Curso Programacion - Fase 4 - Trabajo individual
+=======================================================
+
+COMO EJECUTARLO
+  Abrir la carpeta en Visual Studio Code y ejecutar:
+      python main.py
+  Se crea el archivo eventos.log con todo lo que paso.
+
+ARCHIVOS
+  main.py         Programa principal. Simula 13 operaciones.
+  entidad.py      Clase abstracta Entidad (padre de todas).
+  cliente.py      Clase Cliente con datos privados y validaciones.
+  servicios.py    Clase abstracta Servicio + Sala, Equipo y Asesoria.
+  reserva.py      Clase Reserva: confirmar, cancelar y procesar.
+  excepciones.py  Excepciones propias del sistema.
+  registro.py     Escribe el archivo eventos.log.
+
+DONDE ESTA CADA REQUISITO
+  Clase abstracta ................ Entidad (entidad.py) y Servicio (servicios.py)
+  Encapsulacion .................. Cliente usa atributos privados (self.__nombre)
+                                   y metodos get_/set_ que validan.
+  Herencia ....................... Sala, Equipo y Asesoria heredan de Servicio.
+                                   Cliente, Servicio y Reserva heredan de Entidad.
+  Polimorfismo ................... calcular_costo(), describir() y
+                                   validar_parametros() se llaman igual en los
+                                   3 servicios pero cada uno hace algo distinto.
+  Metodo sobrecargado ............ calcular_total(cantidad, con_iva=False, descuento=0)
+                                   en servicios.py. Se puede llamar de 4 formas
+                                   gracias a los parametros por defecto.
+  Excepciones personalizadas ..... excepciones.py (6 clases).
+  try / except ................... registrar_cliente() en main.py.
+  try / except / else ............ Cada operacion del main.py.
+  try / except / finally ......... procesar() en reserva.py y operacion 8.
+  Encadenamiento (raise from) .... procesar() en reserva.py y
+                                   registrar_cliente() en main.py.
+  Archivo de log ................. registro.py -> eventos.log
+  Listas internas ................ clientes, servicios y reservas en main.py.
+  10 o mas operaciones ........... 13 operaciones: 5 correctas y 8 con error.
+  No se detiene .................. Cada operacion tiene su try. El "except
+                                   Exception" atrapa hasta errores no previstos.
+
+REGLAS DE COBRO
+  Sala ...... por hora, de 1 a 12 horas.
+  Equipo .... por dia, de 1 a 15 dias, + $15.000 de entrega.
+  Asesoria .. por hora, de 1 a 5 horas. Desde 3 horas tiene 5 % de rebaja.
+  IVA del 19 % opcional. Descuento permitido: de 0 a 50 %.
